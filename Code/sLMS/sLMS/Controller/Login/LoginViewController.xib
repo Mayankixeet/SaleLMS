@@ -13,7 +13,103 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b59-te-tg3">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" red="1" green="0.93225483850000002" blue="0.79046489870000003" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LY2-fK-rYi">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="6dt-PM-aCP"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="6dt-PM-aCP"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="6dt-PM-aCP"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvv-LT-MXh" userLabel="btnBack">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="101" id="DAq-IK-UHO"/>
+                        <constraint firstAttribute="height" constant="35" id="N9H-jy-zb3"/>
+                    </constraints>
+                    <state key="normal" title="Back">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="DAq-IK-UHO"/>
+                            <exclude reference="N9H-jy-zb3"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="DAq-IK-UHO"/>
+                            <include reference="N9H-jy-zb3"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnBackClick:" destination="-1" eventType="touchUpInside" id="gNe-ud-KPC"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="b59-te-tg3" secondAttribute="trailing" id="LLq-v5-XHm"/>
+                <constraint firstItem="LY2-fK-rYi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Oky-ET-P46"/>
+                <constraint firstItem="b59-te-tg3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QRc-wI-lew"/>
+                <constraint firstItem="Wvv-LT-MXh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="13" id="Uzq-cb-geR"/>
+                <constraint firstItem="Wvv-LT-MXh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-16" id="XLZ-85-5dg"/>
+                <constraint firstItem="LY2-fK-rYi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eQM-qd-W1T"/>
+                <constraint firstAttribute="trailing" secondItem="LY2-fK-rYi" secondAttribute="trailing" id="gRK-CW-Brc"/>
+                <constraint firstItem="b59-te-tg3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zBv-5d-2o2"/>
+                <constraint firstAttribute="bottom" secondItem="b59-te-tg3" secondAttribute="bottom" id="zyK-Yj-1Ol"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="b59-te-tg3"/>
+                    <exclude reference="LY2-fK-rYi"/>
+                    <exclude reference="Wvv-LT-MXh"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="Oky-ET-P46"/>
+                    <exclude reference="eQM-qd-W1T"/>
+                    <exclude reference="gRK-CW-Brc"/>
+                    <exclude reference="LLq-v5-XHm"/>
+                    <exclude reference="QRc-wI-lew"/>
+                    <exclude reference="zBv-5d-2o2"/>
+                    <exclude reference="zyK-Yj-1Ol"/>
+                    <exclude reference="Uzq-cb-geR"/>
+                    <exclude reference="XLZ-85-5dg"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="b59-te-tg3"/>
+                    <include reference="LY2-fK-rYi"/>
+                    <include reference="Wvv-LT-MXh"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="Oky-ET-P46"/>
+                    <include reference="eQM-qd-W1T"/>
+                    <include reference="gRK-CW-Brc"/>
+                    <include reference="LLq-v5-XHm"/>
+                    <include reference="QRc-wI-lew"/>
+                    <include reference="zBv-5d-2o2"/>
+                    <include reference="zyK-Yj-1Ol"/>
+                    <include reference="Uzq-cb-geR"/>
+                    <include reference="XLZ-85-5dg"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="475" y="444"/>
         </view>
     </objects>
 </document>

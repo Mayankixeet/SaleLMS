@@ -49,6 +49,13 @@
 		A88AB15E1B4BBA590011D32B /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AB14C1B4BBA590011D32B /* UIRefreshControl+AFNetworking.m */; };
 		A88AB15F1B4BBA590011D32B /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AB14E1B4BBA590011D32B /* UIWebView+AFNetworking.m */; };
 		A88AB1621B4BBA8A0011D32B /* AppGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AB1611B4BBA8A0011D32B /* AppGlobal.m */; };
+		A8CB0A241B4CF0280091A70C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB0A211B4CF0280091A70C /* FBSDKCoreKit.framework */; };
+		A8CB0A251B4CF0280091A70C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB0A221B4CF0280091A70C /* FBSDKLoginKit.framework */; };
+		A8CB0A261B4CF0280091A70C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CB0A231B4CF0280091A70C /* FBSDKShareKit.framework */; };
+		A8CB0A2A1B4D2CEF0091A70C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CB0A281B4D2CEF0091A70C /* HomeViewController.m */; };
+		A8CB0A2B1B4D2CEF0091A70C /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8CB0A291B4D2CEF0091A70C /* HomeViewController.xib */; };
+		A8E6348A1B4E47D600910721 /* RegisterationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E634881B4E47D600910721 /* RegisterationViewController.m */; };
+		A8E6348B1B4E47D600910721 /* RegisterationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8E634891B4E47D600910721 /* RegisterationViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +151,15 @@
 		A88AB1601B4BBA8A0011D32B /* AppGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppGlobal.h; sourceTree = "<group>"; };
 		A88AB1611B4BBA8A0011D32B /* AppGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppGlobal.m; sourceTree = "<group>"; };
 		A88AB1631B4BE0000011D32B /* AppConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstant.h; sourceTree = "<group>"; };
+		A8CB0A211B4CF0280091A70C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		A8CB0A221B4CF0280091A70C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		A8CB0A231B4CF0280091A70C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		A8CB0A271B4D2CEF0091A70C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Controller/Home/HomeViewController.h; sourceTree = "<group>"; };
+		A8CB0A281B4D2CEF0091A70C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Controller/Home/HomeViewController.m; sourceTree = "<group>"; };
+		A8CB0A291B4D2CEF0091A70C /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Controller/Home/HomeViewController.xib; sourceTree = "<group>"; };
+		A8E634871B4E47D600910721 /* RegisterationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterationViewController.h; sourceTree = "<group>"; };
+		A8E634881B4E47D600910721 /* RegisterationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterationViewController.m; sourceTree = "<group>"; };
+		A8E634891B4E47D600910721 /* RegisterationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterationViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +167,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8CB0A261B4CF0280091A70C /* FBSDKShareKit.framework in Frameworks */,
+				A8CB0A241B4CF0280091A70C /* FBSDKCoreKit.framework in Frameworks */,
+				A8CB0A251B4CF0280091A70C /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +186,9 @@
 		A88AB01F1B4B96CB0011D32B = {
 			isa = PBXGroup;
 			children = (
+				A8CB0A211B4CF0280091A70C /* FBSDKCoreKit.framework */,
+				A8CB0A221B4CF0280091A70C /* FBSDKLoginKit.framework */,
+				A8CB0A231B4CF0280091A70C /* FBSDKShareKit.framework */,
 				A88AB02A1B4B96CB0011D32B /* sLMS */,
 				A88AB0471B4B96CB0011D32B /* sLMSTests */,
 				A88AB0291B4B96CB0011D32B /* Products */,
@@ -301,6 +323,7 @@
 				A88AB0CF1B4BA6F10011D32B /* Assignment */,
 				A88AB0C41B4BA6780011D32B /* Feed */,
 				A88AB0B81B4BA61C0011D32B /* Login */,
+				A8CB0A2C1B4D2CF70091A70C /* Home */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -311,6 +334,9 @@
 				A88AB0B91B4BA61C0011D32B /* LoginViewController.h */,
 				A88AB0BA1B4BA61C0011D32B /* LoginViewController.m */,
 				A88AB0BB1B4BA61C0011D32B /* LoginViewController.xib */,
+				A8E634871B4E47D600910721 /* RegisterationViewController.h */,
+				A8E634881B4E47D600910721 /* RegisterationViewController.m */,
+				A8E634891B4E47D600910721 /* RegisterationViewController.xib */,
 			);
 			name = Login;
 			path = Controller/Login;
@@ -424,6 +450,16 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		A8CB0A2C1B4D2CF70091A70C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A8CB0A271B4D2CEF0091A70C /* HomeViewController.h */,
+				A8CB0A281B4D2CEF0091A70C /* HomeViewController.m */,
+				A8CB0A291B4D2CEF0091A70C /* HomeViewController.xib */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -507,10 +543,12 @@
 				A88AB0BD1B4BA61C0011D32B /* LoginViewController.xib in Resources */,
 				A88AB0C91B4BA6780011D32B /* FeedViewController.xib in Resources */,
 				A88AB03A1B4B96CB0011D32B /* Main.storyboard in Resources */,
+				A8E6348B1B4E47D600910721 /* RegisterationViewController.xib in Resources */,
 				A88AB03F1B4B96CB0011D32B /* LaunchScreen.xib in Resources */,
 				A88AB0E01B4BA73E0011D32B /* CourseViewController.xib in Resources */,
 				A88AB03C1B4B96CB0011D32B /* Images.xcassets in Resources */,
 				A88AB0D41B4BA6F10011D32B /* AssignmentViewController.xib in Resources */,
+				A8CB0A2B1B4D2CEF0091A70C /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +577,7 @@
 				A88AB1521B4BBA590011D32B /* AFNetworkReachabilityManager.m in Sources */,
 				A88AB1281B4BB2410011D32B /* UserDetail.m in Sources */,
 				A88AB0DF1B4BA73E0011D32B /* CourseViewController.m in Sources */,
+				A8E6348A1B4E47D600910721 /* RegisterationViewController.m in Sources */,
 				A88AB0AD1B4BA4F90011D32B /* FeedHandler.m in Sources */,
 				A88AB0A21B4BA4270011D32B /* CourseHandler.m in Sources */,
 				A88AB1531B4BBA590011D32B /* AFSecurityPolicy.m in Sources */,
@@ -561,6 +600,7 @@
 				A88AB14F1B4BBA590011D32B /* AFHTTPRequestOperation.m in Sources */,
 				A88AB1591B4BBA590011D32B /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				A88AB1561B4BBA590011D32B /* AFURLResponseSerialization.m in Sources */,
+				A8CB0A2A1B4D2CEF0091A70C /* HomeViewController.m in Sources */,
 				A88AB0341B4B96CB0011D32B /* sLMS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,6 +727,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mayank/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sLMS/Shared File/PrefixHeader.pch";
 				INFOPLIST_FILE = sLMS/Info.plist;
@@ -699,6 +743,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mayank/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sLMS/Shared File/PrefixHeader.pch";
 				INFOPLIST_FILE = sLMS/Info.plist;

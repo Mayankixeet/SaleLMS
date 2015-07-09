@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 @interface AppDelegate (){
     UIView *spinnerView;
     UIActivityIndicatorView *activityIndicator;
@@ -18,13 +19,25 @@
 @implementation AppDelegate
 
 @synthesize _engine;
-
+@synthesize _homeViewController,_navHomeViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     //Allocate Engine
     _engine=[[AppEngine alloc] init];
-    return YES;
+    self.window=[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds ];
+    self._homeViewController=[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    
+
+//    self._navHomeViewController=[[UINavigationController alloc] initWithRootViewController:self._homeViewController];
+    
+    self._navHomeViewController = [[UINavigationController alloc] initWithRootViewController:self._homeViewController];
+    [self._navHomeViewController.navigationBar setHidden:YES];
+    self.window.rootViewController = self._navHomeViewController;
+    [self.window makeKeyAndVisible];
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
+    //return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -43,6 +56,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+     [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -50,6 +65,16 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
+}
+
 
 #pragma mark - Core Data stack
 

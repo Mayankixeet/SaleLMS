@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B3e-8s-orZ">
+                    <rect key="frame" x="0.0" y="-8" width="600" height="600"/>
+                    <color key="backgroundColor" red="0.97642299109999997" green="0.91027505779999995" blue="0.77182810069999996" alpha="0.96999999999999997" colorSpace="calibratedRGB"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNt-29-CPa" userLabel="btnFacebook">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="2vF-EQ-Cmm"/>
+                    </constraints>
+                    <state key="normal" title="Connect with Facebook">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="2vF-EQ-Cmm"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="2vF-EQ-Cmm"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnFacebookClick:" destination="-1" eventType="touchUpInside" id="fJo-nh-bUr"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8k-Q5-Rpg" userLabel="btnLogin">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="rVg-pc-E49"/>
+                    </constraints>
+                    <state key="normal" title="Login">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="rVg-pc-E49"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="rVg-pc-E49"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnLoginClick:" destination="-1" eventType="touchUpInside" id="Lfm-vU-86p"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzE-1J-GrG" userLabel="btnRegister">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.93225483850000002" blue="0.79046489870000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="2tg-SK-Ai5"/>
+                    </constraints>
+                    <state key="normal" title="Register">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="2tg-SK-Ai5"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="2tg-SK-Ai5"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="btnRegisterClick:" destination="-1" eventType="touchUpInside" id="Biu-GN-b87"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="B3e-8s-orZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="37K-xU-ZVv"/>
+                <constraint firstAttribute="trailing" secondItem="WNt-29-CPa" secondAttribute="trailing" id="RJl-3a-s5l"/>
+                <constraint firstAttribute="bottom" secondItem="B3e-8s-orZ" secondAttribute="bottom" id="TCg-OK-D1I"/>
+                <constraint firstItem="WNt-29-CPa" firstAttribute="top" secondItem="LzE-1J-GrG" secondAttribute="bottom" id="ZxW-Jj-qIT"/>
+                <constraint firstItem="WNt-29-CPa" firstAttribute="top" secondItem="e8k-Q5-Rpg" secondAttribute="bottom" id="gOR-iP-58B"/>
+                <constraint firstAttribute="trailing" secondItem="LzE-1J-GrG" secondAttribute="trailing" id="gkZ-I3-tCz"/>
+                <constraint firstAttribute="trailing" secondItem="B3e-8s-orZ" secondAttribute="trailing" id="iuW-7I-NiK"/>
+                <constraint firstItem="B3e-8s-orZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jSv-RU-cCP"/>
+                <constraint firstItem="WNt-29-CPa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sY5-O4-LQI"/>
+                <constraint firstItem="e8k-Q5-Rpg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="suw-ev-2mt"/>
+                <constraint firstAttribute="bottom" secondItem="WNt-29-CPa" secondAttribute="bottom" id="xOl-Aw-Awt"/>
+                <constraint firstItem="LzE-1J-GrG" firstAttribute="leading" secondItem="e8k-Q5-Rpg" secondAttribute="trailing" id="xYy-8z-ggY"/>
+                <constraint firstItem="LzE-1J-GrG" firstAttribute="width" secondItem="e8k-Q5-Rpg" secondAttribute="width" id="xcD-91-Jgd"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="WNt-29-CPa"/>
+                    <exclude reference="e8k-Q5-Rpg"/>
+                    <exclude reference="LzE-1J-GrG"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="37K-xU-ZVv"/>
+                    <exclude reference="TCg-OK-D1I"/>
+                    <exclude reference="iuW-7I-NiK"/>
+                    <exclude reference="jSv-RU-cCP"/>
+                    <exclude reference="suw-ev-2mt"/>
+                    <exclude reference="gkZ-I3-tCz"/>
+                    <exclude reference="xYy-8z-ggY"/>
+                    <exclude reference="xcD-91-Jgd"/>
+                    <exclude reference="RJl-3a-s5l"/>
+                    <exclude reference="ZxW-Jj-qIT"/>
+                    <exclude reference="gOR-iP-58B"/>
+                    <exclude reference="sY5-O4-LQI"/>
+                    <exclude reference="xOl-Aw-Awt"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="WNt-29-CPa"/>
+                    <include reference="e8k-Q5-Rpg"/>
+                    <include reference="LzE-1J-GrG"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="37K-xU-ZVv"/>
+                    <include reference="TCg-OK-D1I"/>
+                    <include reference="iuW-7I-NiK"/>
+                    <include reference="jSv-RU-cCP"/>
+                    <include reference="suw-ev-2mt"/>
+                    <include reference="gkZ-I3-tCz"/>
+                    <include reference="xYy-8z-ggY"/>
+                    <include reference="xcD-91-Jgd"/>
+                    <include reference="RJl-3a-s5l"/>
+                    <include reference="ZxW-Jj-qIT"/>
+                    <include reference="gOR-iP-58B"/>
+                    <include reference="sY5-O4-LQI"/>
+                    <include reference="xOl-Aw-Awt"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="561" y="-3627"/>
+        </view>
+    </objects>
+</document>

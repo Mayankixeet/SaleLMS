@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class LoginViewController;
+@class HomeViewController;
 
 @interface ViewController : UIViewController
 
-@property(nonatomic,strong)LoginViewController *_loginViewController;
+@property(nonatomic,strong)HomeViewController *_mainViewController;
 
 @end
 

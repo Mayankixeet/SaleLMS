@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 @class AppEngine;
+@class HomeViewController;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) HomeViewController *_homeViewController;
+@property (strong, nonatomic) UINavigationController *_navHomeViewController;
+
 @property (nonatomic, strong) AppEngine *_engine;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
