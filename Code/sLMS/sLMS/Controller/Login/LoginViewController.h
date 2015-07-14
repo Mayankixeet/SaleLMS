@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+//#import <FBSDKCoreKit/FBSDKCoreKit.h>
+//#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 @interface LoginViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *txtUsername;
+@property (strong, nonatomic) IBOutlet UITextField *txtPassword;
+@property (strong, nonatomic) IBOutlet UIButton *btnRemember;
+- (IBAction)btnRememberClick:(id)sender;
+- (IBAction)btnLoginClick:(id)sender;
+- (IBAction)btnCreatAccount:(id)sender;
+
+- (IBAction)btnForgetpasswordClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *imgLogo;
+@property (weak, nonatomic) IBOutlet FBLoginView *btnFacebook;
 
 @end

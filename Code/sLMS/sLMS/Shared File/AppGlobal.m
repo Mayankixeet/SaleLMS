@@ -146,139 +146,70 @@
     
 }
 //
-////Manage Get/ Set Drop Down List
-//+(NSMutableArray*)getDropdownList:(AppDropdownType)dropdownName{
-//    
-//    NSMutableArray *stateList=[[NSMutableArray alloc] init];
-//    NSString *filePath =  @"";
-//    
-//    
-//    switch(dropdownName) {
-//        case State_Dropdown:
-//        case QuoteStatus_Dropdown:
-//        case LostReason_Dropdown:
-//        case QuoteShippingType_Dropdown:
-//        case QuoteType_Dropdown:
-//        case ProjectOwnerType_Dropdown:
-//        {
-//            filePath =  [[NSBundle mainBundle] pathForResource:[self getDropdownFileName:dropdownName] ofType:@"txt"];
-//            
-//        }break;
-//        case LineOfBusiness_Dropdown:
-//        case CategoryNotes_Dropdown:
-//        case SalesPersons_Visualization_Dropdown:
-//        case Templates_Dropdown:
-//        case Location_Dropdown:
-//        case MergeFields_Dropdown:
-//        {
+//Manage Get/ Set Drop Down List
++(NSMutableArray*)getDropdownList:(AppDropdownType)dropdownName{
+    
+    NSMutableArray *stateList=[[NSMutableArray alloc] init];
+    NSString *filePath =  @"";
+    
+    
+    switch(dropdownName) {
+        case SCHOOL_DATA:
+        case CLASS_DATA:
+        case ROOM_DATA:
+        case TITLE_DATA:
+        {
+            filePath =  [[NSBundle mainBundle] pathForResource:[self getDropdownFileName:dropdownName] ofType:@"txt"];
 //            NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //            filePath =  [NSString stringWithFormat:@"%@/%@.txt",[arr objectAtIndex:0],[self getDropdownFileName:dropdownName] ];
-//            
-//            
-//        }break;
-//        case QuoteISTaxExempt_Dropdown:{
-//            
-//            [stateList addObject:@{@"Id":[NSNumber numberWithBool:YES],
-//                                   @"Description":@"Yes",
-//                                   }];
-//            [stateList addObject:@{@"Id":[NSNumber numberWithBool:NO],
-//                                   @"Description":@"No",
-//                                   }];
-//            
-//            return stateList;
-//            
-//        }break;
-//        case QuoteWonLost_DropDown:{
-//            
-//            [stateList addObject:@{@"Id":[NSNumber numberWithInteger:QuoteStatus_Won],
-//                                   @"Description":@"Won",
-//                                   }];
-//            [stateList addObject:@{@"Id":[NSNumber numberWithInteger:QuoteStatus_Lost],
-//                                   @"Description":@"Lost",
-//                                   }];
-//            
-//            return stateList;
-//            
-//        }break;
-//        case SalesPersons_QuoteDetail_Dropdown:{
-//            
-//            [stateList addObject:@{@"Id":userDetail.userId,
-//                                   @"Description":userDetail.userName,
-//                                   }];
-//            return stateList;
-//            
-//        }break;
-//            
-//        default:
-//            break;
-//    }
-//    
-//    
-//    
-//    //read File
-//    [stateList addObjectsFromArray:[AppGlobal readFileData:filePath]];
-//    return stateList;
-//    
-//}
-//+(void)setDropdownList:(AppDropdownType)dropdownName andData:(NSData *)data{
-//    
-//    
-//    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *filePath =  [NSString stringWithFormat:@"%@/%@.txt",[arr objectAtIndex:0],[self getDropdownFileName:dropdownName] ];
-//    //NSLog(@"filePath: %@",filePath);
-//    [self  writeFile:filePath andData:data ];
-//    
-//}
-//
-//+(NSString*)getDropdownFileName:(AppDropdownType )dropdownName{
-//    
-//    NSString *fileName;
-//    switch(dropdownName) {
-//        case State_Dropdown:
-//            fileName = @"stateList";
-//            break;
-//        case QuoteStatus_Dropdown:
-//            fileName = @"quoteStatusList";
-//            break;
-//        case CategoryNotes_Dropdown:
-//            fileName = @"categoryNotesList";
-//            break;
-//        case LineOfBusiness_Dropdown:
-//            fileName = @"lineOfBusinessList";
-//            break;
-//        case SalesPersons_Visualization_Dropdown:
-//            fileName = @"salesPersonsList";
-//            break;
-//        case Templates_Dropdown:
-//            fileName = @"templatesList";
-//            break;
-//        case MergeFields_Dropdown:
-//            fileName = @"mergeFieldsList";
-//            break;
-//        case LostReason_Dropdown:
-//            fileName = @"lostReasonList";
-//            break;
-//        case QuoteShippingType_Dropdown:
-//            fileName = @"quoteShippingTypeList";
-//            break;
-//        case QuoteType_Dropdown:
-//            fileName = @"quoteTypeList";
-//            break;
-//        case Location_Dropdown:
-//            fileName = @"quoteLocationList";
-//            break;
-//        case ProjectOwnerType_Dropdown:
-//            fileName = @"projectOwnerType";
-//            break;
-//            
-//            
-//        default:
-//            [NSException raise:NSGenericException format:@"Unexpected FormatType."];
-//    }
-//    
-//    
-//    return fileName;
-//}
+            
+        }break;
+        default:
+            break;
+    }
+    
+    
+    
+    //read File
+    [stateList addObjectsFromArray:[AppGlobal readFileData:filePath]];
+    return stateList;
+    
+}
++(void)setDropdownList:(AppDropdownType)dropdownName andData:(NSData *)data{
+    
+    
+    NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *filePath =  [NSString stringWithFormat:@"%@/%@.txt",[arr objectAtIndex:0],[self getDropdownFileName:dropdownName] ];
+    //NSLog(@"filePath: %@",filePath);
+    [self  writeFile:filePath andData:data ];
+    
+}
+
++(NSString*)getDropdownFileName:(AppDropdownType )dropdownName{
+    
+    NSString *fileName;
+    switch(dropdownName) {
+        case SCHOOL_DATA:
+            fileName = @"stataList";
+            break;
+        case CLASS_DATA:
+            fileName = @"classList";
+            break;
+        case ROOM_DATA:
+            fileName = @"homeroomList";
+            break;
+            
+        case TITLE_DATA:
+            fileName = @"titleList";
+            break;
+
+        default:
+            [NSException raise:NSGenericException format:@"Unexpected FormatType."];
+    }
+    
+    
+    return fileName;
+}
 
 //Calculate Dynamic Size of text
 +(CGSize)calculateTextSizeWithString:(NSString*)text width:(CGFloat)width font:(UIFont*)font{
@@ -408,7 +339,29 @@
         }
     }
 }
-
++ (void)ShowHidePickeratWindow:(UIView *)viewFromWindow fromWindow:(UIView *)viewAtWindow withVisibility:(BOOL)bIsPickerHidden {
+    CGRect rectFrame = [viewFromWindow frame];
+    CGRect rectScreen = viewAtWindow.frame;
+    
+    if (!bIsPickerHidden) {
+        rectFrame.origin.y = rectScreen.size.height;
+    }
+    else{
+        [viewFromWindow resignFirstResponder];
+        rectFrame.origin.y = rectScreen.size.height - 255;
+    }
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.5
+                        options:UIViewAnimationOptionTransitionNone
+                     animations:^{
+                         [viewFromWindow setFrame:rectFrame];
+                         /** code **/
+                     }
+                     completion:^(BOOL finished) {
+                         /** code **/
+                     }];
+}
 
 
 @end

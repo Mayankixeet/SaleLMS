@@ -7,7 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
+@interface RegisterationViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *txtEmail;
+@property (strong, nonatomic) IBOutlet UITextField *txtFirstName;
+@property (strong, nonatomic) IBOutlet UITextField *txtCnfPwd;
+@property (strong, nonatomic) IBOutlet UITextField *txtPassword;
+@property (strong, nonatomic) IBOutlet UITextField *txtAdminEmail;
 
-@interface RegisterationViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *txtLastName;
+@property (weak, nonatomic) IBOutlet FBLoginView *btnFacebook;
+- (IBAction)btnBcakClick:(id)sender ;
+- (IBAction)btnSubmitClick:(id)sender;
+- (IBAction)btnTitleClick:(id)sender;
+- (IBAction)btnSignInClick:(id)sender;
+- (IBAction)btnSchoolClick:(id)sender;
+- (IBAction)btnClassClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UIPickerView *mDataPickerView;
+- (IBAction)btnHomeClick:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIView *viewLogin;
+@property (strong, nonatomic) IBOutlet UIView *mViewAccountTypePicker;
+- (IBAction)mBtnCancelPicker:(id)sender ;
+- (IBAction)mBtnDonePicker:(id)sender ;
 @end

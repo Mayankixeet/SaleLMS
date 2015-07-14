@@ -7,7 +7,126 @@
 //
 
 #import "AppEngine.h"
-
+#import "LoginHandler.h"
+#import "UserDetail.h"
+#import "NSString+AESCrypt.h"
 @implementation AppEngine
 
+#pragma mark - User login
+
+
+//User Login with credentials (user id and password)
+-(void)loginWithUserName:(NSString*)userName password:(NSString*)password rememberMe:(BOOL)rememberMe success:(void (^)(UserDetail *userDetail))success  failure:(void (^)(NSError *error))failure{
+    
+    
+    LoginHandler *login=[[LoginHandler alloc] init];
+    // convert to AES 256 Exncryption
+    NSString  *encpassword=  [password AES256EncryptWithKey:@"m@zd@10017017Int33r@IT"];
+    //  NSString  *decpassword=  [encpassword AES256DecryptWithKey:@"m@zd@10017017Int33r@IT"];
+    [login loginWithUserName:userName password:encpassword  success:^(UserDetail *userDetail){
+        
+        if (rememberMe) {  //Save Login Detail In user default
+            [AppGlobal setValueInDefault:key_rememberMe value:[NSNumber numberWithBool:YES]];
+        }
+        else{//Remove Login Detail In user default
+            [AppGlobal setValueInDefault:key_rememberMe value:[NSNumber numberWithBool:NO]];
+        }
+        
+        [AppGlobal setValueInDefault:key_loginId value:userName];
+        [AppGlobal setValueInDefault:key_loginPassword value:password];
+        
+        success(userDetail);
+        
+    }failure:^(NSError *error){
+        [AppGlobal setValueInDefault:key_rememberMe value:[NSNumber numberWithBool:NO]];
+        failure(error);
+    }];
+}
+#pragma mark - logout
+
+//User Logout
+-(void)logout:(void (^)(BOOL logoutValue))success  failure:(void (^)(NSError *error))failure{
+    
+    LoginHandler *login=[[LoginHandler alloc] init];
+    [login logout:^(BOOL logoutValue){
+        success(logoutValue);
+    }failure:^(NSError *error){
+        failure(error);
+    }];
+}
+#pragma mark - Forget Password
+
+
+//User Forget password 
+-(void)ForgetPasswordWithUserName:(NSString*)userName success:(void (^)(BOOL logoutValue))success  failure:(void (^)(NSError *error))failure{
+    
+    
+    LoginHandler *login=[[LoginHandler alloc] init];
+    
+    [login ForgetPasswordWithUserName:userName  success:^(BOOL logoutValue){
+        
+        success(logoutValue);
+        
+    }failure:^(NSError *error){
+        
+        failure(error);
+    }];
+}
+#pragma mark - User register
+
+
+//User Register
+-(void)registerWithUserDetail:(UserDetail*)user success:(void (^)(UserDetail *userDetail))success  failure:(void (^)(NSError *error))failure{
+    
+    LoginHandler *login=[[LoginHandler alloc] init];
+    [login registerWithUserDetail:user  success:^(UserDetail *userDetail){
+        
+       
+        
+        success(userDetail);
+        
+    }failure:^(NSError *error){
+        [AppGlobal setValueInDefault:key_rememberMe value:[NSNumber numberWithBool:NO]];
+        failure(error);
+    }];
+}
+//FB Varification by Server
+-(void)FBloginWithUserID:(NSString*)userid success:(void (^)(UserDetail *userDetail))success  failure:(void (^)(NSError *error))failure{
+    
+    LoginHandler *login=[[LoginHandler alloc] init];
+    [login FBloginWithUserID:userid  success:^(UserDetail *userDetail){
+        
+        
+        
+        success(userDetail);
+        
+    }failure:^(NSError *error){
+        [AppGlobal setValueInDefault:key_rememberMe value:[NSNumber numberWithBool:NO]];
+        failure(error);
+    }];
+}
+//User Set FB  with user id
+-(void)SetFBloginWithUserID:(NSString*)username FBID:(NSString*)fbid success:(void (^)(bool status))success  failure:(void (^)(NSError *error))failure{
+    LoginHandler *login=[[LoginHandler alloc] init];
+    [login SetFBloginWithUserID:username FBID:fbid  success:^(bool status){
+        
+        
+        
+        success(status);
+        
+    }failure:^(NSError *error){
+        [AppGlobal setValueInDefault:key_rememberMe value:[NSNumber numberWithBool:NO]];
+        failure(error);
+    }];
+
+}
+//get Master Data
+-(void)getMasterData:(void (^)(BOOL success))success  failure:(void (^)(NSError *error))failure{
+    LoginHandler *login=[[LoginHandler alloc] init];
+    [login getMasterData:^(BOOL successValue){
+        success(successValue);
+    }failure:^(NSError *error){
+        failure(error);
+    }];
+}
 @end

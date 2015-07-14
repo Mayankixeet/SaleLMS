@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 @class LoginViewController;
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <FBLoginViewDelegate>
 
     @property(nonatomic,strong) HomeViewController *_homeViewController;                     //For Login
     @property(nonatomic,strong) UINavigationController *_navigationController_Login;
 
-- (IBAction)btnFacebookClick:(id)sender;
 - (IBAction)btnLoginClick:(id)sender;
 - (IBAction)btnRegisterClick:(id)sender;
+@property (weak, nonatomic) IBOutlet FBLoginView *btnFacebook;
 
 @end

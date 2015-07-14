@@ -9,28 +9,59 @@
 #ifndef sLMS_AppConstant_h
 #define sLMS_AppConstant_h
 
-#define  APP_URL  @"http://52.5.111.203/OMGQuoteMobileService/OMGEnterpriseAjax.svc/"
+#define  APP_URL  @"http://191.239.57.54:8080/"
 
+#define MASTER_DATA_URL APP_URL@"SLMS/rest/user/register"
+#define USER_REGISTER_URL APP_URL@"SLMS/rest/user/register"
+#define USER_LOGIN_URL APP_URL@"SLMS/rest/user/login"
+#define USER_LOGUT_URL APP_URL@"SLMS/rest/user/logout"
+#define USER_FORGETPASSWORD_URL(username) [NSString stringWithFormat:APP_URL@"SLMS/rest/user /forgetPwd/userId/%@",username]
 
-//App URL
-//#define  APP_URL  @"http://10.151.1.10/OMGQuoteMobileService/OMGEnterpriseAjax.svc/"
+#define USER_REGISTER_URL APP_URL@"SLMS/rest/user/register"
+#define USER_SET_FB_URL(userName,fbId) [NSString stringWithFormat:APP_URL@"SLMS/rest/user/setFBId/userName/%@/userFbId/%@",userName,fbId]
+#define USER_VALIDATE_FB_URL(fbId) [NSString stringWithFormat:APP_URL@"SLMS/rest/user/getByFBId/userFbId/%@",fbId]
 
-#define USER_LOGIN_URL APP_URL@"QuoteLogin"
-#define USER_LOGUT_URL APP_URL@"QuoteLogout"
+//Key For UserDefault
 
+#define key_loginId @"LoginId"
+#define key_loginPassword @"LoginPassword"
+#define key_rememberMe @"rememberMe"
+#define key_UserInfo @"UserDetail"
 //App Delegate Reference
 #define appDelegate (AppDelegate *)[[UIApplication sharedApplication] delegate]
 
 //server Respond Key
-#define key_severRespond_Status @"Status"
-#define key_severRespond_StatusMessage @"StatusMessage"
+#define key_severRespond_Status @"status"
+#define key_severRespond_StatusMessage @"statusMessage"
 
 // Error Msg
+#define ERROR_DEFAULT_MSG @"There seems to be a problem connecting with server. Please check your network connection."
 #define MISSING_LOGIN_ID @"Please enter user id."
 #define MISSING_PASSWORD @"Please enter password."
+
+#define MISSING_EMAIL_ID @"Please enter email id."
+#define MISSING_FIRST_NAME @"Please enter fisrt name."
+#define MISSING_LAST_NAME @"Please enter last name."
+#define MISSING_EMAIL_ID @"Please enter email id."
+#define MISSING_CNF_PASSWORD @"Your new password and confirm password do not match."
+#define MISSING_CNF_PASSWORD_NOT_MATCH @"Your new password and confirm password do not match."
+#define MISSING_SCHOOL @"Please enter school name."
+#define MISSING_CLASS @"Please enter class name."
+#define MISSING_HOME @"Please enter home rome"
+#define MISSING_ADMIN_EMAIL @"Please enter admin email id."
+
 
 // Success Message Alert Title
 
 #define SUCCESS_MESSAGE_ALERT_TITLE @"Info"
+#define DATA_LOADING_MSG @"Please wait..."
+
+//Dropdown Enums
+typedef NS_ENUM(NSInteger, AppDropdownType){
+    SCHOOL_DATA,
+    CLASS_DATA,
+    ROOM_DATA,
+    TITLE_DATA
+};
 
 #endif

@@ -59,8 +59,12 @@
 //element Set Enabled
 +(void)elementSetEnabled:(BOOL)enabled OfView:(UIView*)view;
 
+// get the dropdown data
++(NSMutableArray*)getDropdownList:(AppDropdownType)dropdownName;
+// set the dropdown data
++(void)setDropdownList:(AppDropdownType)dropdownName andData:(NSData *)data;
 
-
++ (void)ShowHidePickeratWindow:(UIView *)viewFromWindow fromWindow:(UIView *)viewAtWindow withVisibility:(BOOL)bIsPickerHidden ;
 
 
 @end

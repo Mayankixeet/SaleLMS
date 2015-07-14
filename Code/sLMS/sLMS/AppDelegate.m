@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
+//#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FacebookSDK/FacebookSDK.h>
+
 @interface AppDelegate (){
     UIView *spinnerView;
     UIActivityIndicatorView *activityIndicator;
@@ -35,9 +37,12 @@
     [self._navHomeViewController.navigationBar setHidden:YES];
     self.window.rootViewController = self._navHomeViewController;
     [self.window makeKeyAndVisible];
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
-    //return YES;
+    [FBLoginView class];
+    [FBProfilePictureView class];
+
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                    didFinishLaunchingWithOptions:launchOptions];
+   return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -57,7 +62,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
-     [FBSDKAppEvents activateApp];
+     //[FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -69,10 +74,12 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                                          openURL:url
+//                                                sourceApplication:sourceApplication
+//                                                       annotation:annotation];
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication];
 }
 
 
