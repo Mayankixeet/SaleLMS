@@ -11,7 +11,7 @@
 
 #define  APP_URL  @"http://191.239.57.54:8080/"
 
-#define MASTER_DATA_URL APP_URL@"SLMS/rest/user/register"
+#define MASTER_DATA_URL APP_URL@"SLMS/rest/common/getMasterData"
 #define USER_REGISTER_URL APP_URL@"SLMS/rest/user/register"
 #define USER_LOGIN_URL APP_URL@"SLMS/rest/user/login"
 #define USER_LOGUT_URL APP_URL@"SLMS/rest/user/logout"
@@ -21,12 +21,15 @@
 #define USER_SET_FB_URL(userName,fbId) [NSString stringWithFormat:APP_URL@"SLMS/rest/user/setFBId/userName/%@/userFbId/%@",userName,fbId]
 #define USER_VALIDATE_FB_URL(fbId) [NSString stringWithFormat:APP_URL@"SLMS/rest/user/getByFBId/userFbId/%@",fbId]
 
+#define USER_COURSE_URL APP_URL@"SLMS/rest/course/getCourses"
 //Key For UserDefault
 
 #define key_loginId @"LoginId"
 #define key_loginPassword @"LoginPassword"
 #define key_rememberMe @"rememberMe"
-#define key_UserInfo @"UserDetail"
+#define key_UserId @"UserId"
+#define key_UserName @"UserName"
+#define key_UserEmail @"UserEmail"
 //App Delegate Reference
 #define appDelegate (AppDelegate *)[[UIApplication sharedApplication] delegate]
 
@@ -40,14 +43,14 @@
 #define MISSING_PASSWORD @"Please enter password."
 
 #define MISSING_EMAIL_ID @"Please enter email id."
-#define MISSING_FIRST_NAME @"Please enter fisrt name."
+#define MISSING_FIRST_NAME @"Please enter first name."
 #define MISSING_LAST_NAME @"Please enter last name."
 #define MISSING_EMAIL_ID @"Please enter email id."
 #define MISSING_CNF_PASSWORD @"Your new password and confirm password do not match."
 #define MISSING_CNF_PASSWORD_NOT_MATCH @"Your new password and confirm password do not match."
-#define MISSING_SCHOOL @"Please enter school name."
-#define MISSING_CLASS @"Please enter class name."
-#define MISSING_HOME @"Please enter home rome"
+#define MISSING_SCHOOL @"Please select school name."
+#define MISSING_CLASS @"Please select class name."
+#define MISSING_HOME @"Please select home room"
 #define MISSING_ADMIN_EMAIL @"Please enter admin email id."
 
 
@@ -61,7 +64,8 @@ typedef NS_ENUM(NSInteger, AppDropdownType){
     SCHOOL_DATA,
     CLASS_DATA,
     ROOM_DATA,
-    TITLE_DATA
+    TITLE_DATA,
+    COURSE_DATA
 };
 
 #endif

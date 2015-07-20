@@ -16,7 +16,7 @@
     
     
     NSDictionary *parameters = @{@"userName":userName,
-                                 @"userPassword":@"t5Rit9RZTg2pwz3hJpJFpA==",
+                                 @"userPassword":password,
                                  };
     
     
@@ -142,7 +142,7 @@
 
 //User Register
  -(void)registerWithUserDetail:(UserDetail*)user success:(void (^)(UserDetail *userDetail))success  failure:(void (^)(NSError *error))failure{
-         
+         user.address=@"";
          
          NSDictionary *parameters = @{@"userName":user.userEmail,@"firstName":user.userFirstName,@"lastName":user.userLastName,@"emailId":user.userEmail,@"adminEmailId":user.adminEmailId,@"schoolId":user.schoolId,@"schoolName":user.schoolName,@"address":user.address,@"classId":user.classId,@"className":user.className,@"homeRoomId":user.homeRoomId,@"homeRoomName":user.homeRoomName,@"title":user.title};
      
@@ -291,10 +291,12 @@
         //Success Full Logout
         if ([[responseDic objectForKey:key_severRespond_Status] integerValue] == 1001) { //Success
             
+            // set the drop down master data;
+            [AppGlobal  setDropdownList:SCHOOL_DATA andData:[responseDic objectForKey:@"schoolList"]];
             //call Block function
             success(YES);
-            // set the drop down master data;
-            
+        
+           
         }
         else {
             //call Block function

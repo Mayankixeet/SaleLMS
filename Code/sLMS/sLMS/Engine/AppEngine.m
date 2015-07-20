@@ -10,6 +10,8 @@
 #import "LoginHandler.h"
 #import "UserDetail.h"
 #import "NSString+AESCrypt.h"
+#import "CourseHandler.h"
+
 @implementation AppEngine
 
 #pragma mark - User login
@@ -79,6 +81,7 @@
 -(void)registerWithUserDetail:(UserDetail*)user success:(void (^)(UserDetail *userDetail))success  failure:(void (^)(NSError *error))failure{
     
     LoginHandler *login=[[LoginHandler alloc] init];
+    user.userPassword=  [user.userPassword AES256EncryptWithKey:@"m@zd@10017017Int33r@IT"];
     [login registerWithUserDetail:user  success:^(UserDetail *userDetail){
         
        
@@ -129,4 +132,17 @@
         failure(error);
     }];
 }
+
+#pragma Courses Functions
+//get my Course Data
+-(void)getMyCourse:(NSString*)userid  AndTextSearch:(NSString*)txtSearch success:(void (^)(NSMutableArray *courses))success  failure:(void (^)(NSError *error))failure
+{
+    CourseHandler *course=[[ CourseHandler alloc] init];
+    [course getMyCourse:userid  AndTextSearch:txtSearch success:^(NSMutableArray *courseList){
+        success(courseList);
+    }failure:^(NSError *error){
+        failure(error);
+    }];
+}
+
 @end

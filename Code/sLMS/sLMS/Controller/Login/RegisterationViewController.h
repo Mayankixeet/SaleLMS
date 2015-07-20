@@ -17,6 +17,11 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *txtLastName;
 @property (weak, nonatomic) IBOutlet FBLoginView *btnFacebook;
+@property (strong, nonatomic) IBOutlet UIButton *btnSchool;
+@property (strong, nonatomic) IBOutlet UIButton *btnClass;
+@property (strong, nonatomic) IBOutlet UIButton *btnHome;
+@property (strong, nonatomic) IBOutlet UIButton *btnTitle;
+
 - (IBAction)btnBcakClick:(id)sender ;
 - (IBAction)btnSubmitClick:(id)sender;
 - (IBAction)btnTitleClick:(id)sender;

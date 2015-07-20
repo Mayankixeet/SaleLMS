@@ -9,6 +9,8 @@
 #import "RegisterationViewController.h"
 #import "CustomKeyboard.h"
 #import "UserDetail.h"
+#import "FeedViewController.h"
+
 @interface RegisterationViewController () <CustomKeyboardDelegate>
 {
     //keyboard
@@ -16,6 +18,9 @@
     UITextField *activeTextField;
     int             mIntRow;
     NSMutableArray *arrayAllData;
+    NSMutableArray *arraySchools;
+    NSMutableArray *arrayClass;
+    NSMutableArray *arrayHome;
     AppDropdownType selectedPicker;
     NSString *selectedSchoolId,*selectedClassId,*selectedRoomId;
     NSString *selectedSchoolName,*selectedClassName,*selectedRoomName;
@@ -26,11 +31,16 @@
 @end
 
 @implementation RegisterationViewController
-@synthesize txtPassword,txtAdminEmail,txtCnfPwd,txtEmail,txtFirstName,txtLastName,mDataPickerView,mViewAccountTypePicker;
+@synthesize txtPassword,txtAdminEmail,txtCnfPwd,txtEmail,txtFirstName,txtLastName,mDataPickerView,mViewAccountTypePicker,btnClass,btnFacebook,btnHome,btnSchool,btnTitle;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     //init the keyboard
+    if([AppGlobal getValueInDefault:key_UserId ]!=nil)
+    {
+        FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
     customKeyboard = [[CustomKeyboard alloc] init];
     customKeyboard.delegate = self;
     [self toggleHiddenState:YES];
@@ -40,6 +50,12 @@
     self.btnFacebook.readPermissions = @[@"public_profile", @"email"];
     [self changeFrameAndBackgroundImg];
     selectedTitle=@"Mr.";
+    [self fetchedMasterData];
+    // set default  title
+//    NSDictionary
+//   [ btnTitle  setTitle: forState:UIControlStateNormal];
+   
+    // set
  }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +85,7 @@
     
    usrDetail.userPassword=[[txtPassword text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    NSString *cnfpassword=[[txtPassword text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *cnfpassword=[[txtCnfPwd text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
    
     usrDetail.userFirstName=txtFirstName.text;
     usrDetail.userLastName=txtLastName.text;
@@ -82,7 +98,13 @@
     usrDetail.homeRoomId=selectedRoomId;
     usrDetail.adminEmailId=txtAdminEmail.text;
     
-    if ([usrDetail.userEmail length] <= 0) {
+   
+    if ([usrDetail.userFirstName length] <= 0){
+        [AppGlobal showAlertWithMessage:MISSING_FIRST_NAME title:@""];
+    }
+    else if ([usrDetail.userLastName length] <= 0){
+        [AppGlobal showAlertWithMessage:MISSING_LAST_NAME title:@""];
+    }else if ([usrDetail.userEmail length] <= 0) {
         [AppGlobal showAlertWithMessage:MISSING_EMAIL_ID title:@""];
     }else if ([usrDetail.userPassword length] <= 0){
         [AppGlobal showAlertWithMessage:MISSING_PASSWORD title:@""];
@@ -90,30 +112,23 @@
     else if ([cnfpassword length] <= 0){
         [AppGlobal showAlertWithMessage:MISSING_CNF_PASSWORD title:@""];
     }
-    else if ([cnfpassword isEqualToString:usrDetail.userEmail]){
+    else if (![cnfpassword isEqualToString:usrDetail.userPassword]){
         [AppGlobal showAlertWithMessage:MISSING_CNF_PASSWORD_NOT_MATCH title:@""];
     }
-    else if ([usrDetail.userFirstName length] <= 0){
-        [AppGlobal showAlertWithMessage:MISSING_FIRST_NAME title:@""];
-    }
-    else if ([usrDetail.userLastName length] <= 0){
-        [AppGlobal showAlertWithMessage:MISSING_LAST_NAME title:@""];
-    }
-    else if ([usrDetail.className length] <= 0){
-        [AppGlobal showAlertWithMessage:MISSING_CLASS title:@""];
-    }
-    
-    else if ([usrDetail.schoolName length] <= 0){
+        else if ([usrDetail.schoolName length] <= 0){
         [AppGlobal showAlertWithMessage:MISSING_SCHOOL title:@""];
     }
+    else if ([usrDetail.adminEmailId length] <= 0){
+            [AppGlobal showAlertWithMessage:MISSING_ADMIN_EMAIL title:@""];
+    }
+    else if ([usrDetail.className length] <= 0){
+            [AppGlobal showAlertWithMessage:MISSING_CLASS title:@""];
     
-    
+    }
     else if ([usrDetail.homeRoomName length] <= 0){
         [AppGlobal showAlertWithMessage:MISSING_HOME title:@""];
     }
-    else if ([usrDetail.adminEmailId length] <= 0){
-        [AppGlobal showAlertWithMessage:MISSING_ADMIN_EMAIL title:@""];
-    }
+   
     
     else{
         [activeTextField resignFirstResponder];
@@ -122,10 +137,15 @@
         
         [[appDelegate _engine] registerWithUserDetail:usrDetail  success:^(UserDetail *userDetail) {
                                              
-            [AppGlobal setValueInDefault:key_UserInfo value:userDetail];
+            [AppGlobal setValueInDefault:key_UserId value:userDetail.userId];
+            [AppGlobal setValueInDefault:key_UserName value:userDetail.userFirstName];
+            [AppGlobal setValueInDefault:key_UserEmail value:userDetail.userEmail];
                                              //Hide Indicator
                                              [appDelegate hideSpinner];
             //navigate to feed view Controller
+            
+            FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+            [self.navigationController pushViewController:viewController animated:YES];
                                          }
                                          failure:^(NSError *error) {
                                              //Hide Indicator
@@ -137,6 +157,28 @@
     }
 
 }
+-(void)fetchedMasterData{
+    
+    
+    
+    //Show Indicator
+    [appDelegate showSpinnerWithMessage:DATA_LOADING_MSG];
+    
+    [[appDelegate _engine] getMasterData:^(BOOL success) {
+        //Hide Indicator
+        [appDelegate hideSpinner];
+        arraySchools=[AppGlobal getDropdownList:SCHOOL_DATA];
+    } failure:^(NSError *error) {
+        //Hide Indicator
+        [appDelegate hideSpinner];
+        NSLog(@"failure JsonData %@",[error description]);
+    }];
+    // if user valid then navigate to main screen.
+    
+    //    self.profilePicture.profileID = user.id;
+    //    self.lblUsername.text = user.name;
+    //    self.lblEmail.text = [user objectForKey:@"email"];
+}
 -(void)registerationError:(NSError*)error{
     
     [AppGlobal showAlertWithMessage:[[error userInfo] objectForKey:NSLocalizedDescriptionKey] title:@""];
@@ -146,6 +188,7 @@
     arrayAllData=[AppGlobal getDropdownList:TITLE_DATA];
     [mDataPickerView reloadAllComponents];
     [AppGlobal ShowHidePickeratWindow:mViewAccountTypePicker fromWindow:self.view withVisibility:YES];
+    [self allTxtFieldsResignFirstResponder];
 }
 
 - (IBAction)btnSignInClick:(id)sender {
@@ -156,22 +199,37 @@
 
 - (IBAction)btnSchoolClick:(id)sender {
     selectedPicker=SCHOOL_DATA;
-    arrayAllData=[AppGlobal getDropdownList:SCHOOL_DATA];
-     [mDataPickerView reloadAllComponents];
+    
+    
+    [mDataPickerView reloadAllComponents];
     [AppGlobal ShowHidePickeratWindow:mViewAccountTypePicker fromWindow:self.view withVisibility:YES];
+     [self allTxtFieldsResignFirstResponder];
+    [btnClass setTitle:@"" forState:UIControlStateNormal];
+    [btnHome   setTitle:@"" forState:UIControlStateNormal];
+    selectedClassId=nil;
+    selectedClassName=nil;
+    selectedRoomId=nil;
+    selectedRoomName=nil;
 }
 
 - (IBAction)btnClassClick:(id)sender {
     selectedPicker=CLASS_DATA;
-    arrayAllData=[AppGlobal getDropdownList:CLASS_DATA];
+   // arrayAllData=[AppGlobal getDropdownList:CLASS_DATA];
      [mDataPickerView reloadAllComponents];
-[AppGlobal ShowHidePickeratWindow:mViewAccountTypePicker fromWindow:self.view withVisibility:YES];
+    [AppGlobal ShowHidePickeratWindow:mViewAccountTypePicker fromWindow:self.view withVisibility:YES];
+     [self allTxtFieldsResignFirstResponder];
+    [btnHome   setTitle:@"" forState:UIControlStateNormal];
+  
+    selectedRoomId=nil;
+    selectedRoomName=nil;
 }
 
 - (IBAction)btnHomeClick:(id)sender {
     selectedPicker=ROOM_DATA;
-    arrayAllData=[AppGlobal getDropdownList:ROOM_DATA];
+  //  arrayAllData=[AppGlobal getDropdownList:ROOM_DATA];
+     [mDataPickerView reloadAllComponents];
     [AppGlobal ShowHidePickeratWindow:mViewAccountTypePicker fromWindow:self.view withVisibility:YES];
+     [self allTxtFieldsResignFirstResponder];
 }
 
 #pragma mark - Private method implementation
@@ -180,7 +238,7 @@
     
     //  _btnFacebook.frame = CGRectMake(0, _btnFacebook.frame.origin.y+14, _btnFacebook.frame.size.width, 120);
     //  _btnFacebook.frame = CGRectMake(320/2 - 93/2, self.view.frame.size.height -200, 93, 40);
-    for (id loginObject in _btnFacebook.subviews)
+    for (id loginObject in btnFacebook.subviews)
     {
         if ([loginObject isKindOfClass:[UIButton class]])
         {
@@ -232,7 +290,9 @@
     [appDelegate showSpinnerWithMessage:DATA_LOADING_MSG];
     
     [[appDelegate _engine] FBloginWithUserID:userid success:^(UserDetail *userDetail) {
-        
+        [AppGlobal setValueInDefault:key_UserId value:userDetail.userId];
+        [AppGlobal setValueInDefault:key_UserName value:userDetail.userFirstName];
+        [AppGlobal setValueInDefault:key_UserEmail value:userDetail.userEmail];
         [self loginSucessFullWithFB];
         
         //Hide Indicator
@@ -242,6 +302,8 @@
                                          //Hide Indicator
                                          [appDelegate hideSpinner];
                                          NSLog(@"failure JsonData %@",[error description]);
+                                         [self loginViewShowingLoggedOutUser:loginView];
+
                                          [self loginError:error];
                                          
                                      }];
@@ -259,7 +321,17 @@
     
     
     [self dismissViewControllerAnimated:YES completion:^{}];
+    FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
+-(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
+    // self.lblLoginStatus.text = @"You are logged out";
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession.activeSession close];
+    [FBSession setActiveSession:nil];
+    [self toggleHiddenState:YES];
+}
+
 -(void)loginError:(NSError*)error{
     
     [AppGlobal showAlertWithMessage:[[error userInfo] objectForKey:NSLocalizedDescriptionKey] title:@""];
@@ -275,7 +347,7 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     if([txtAdminEmail isEqual:textField]){
-        [self setPositionOfLoginBaseViewWhenStartEditing:-100];
+        [self setPositionOfLoginBaseViewWhenStartEditing:-150];
         
     }
     
@@ -286,7 +358,7 @@
         toolbar = [customKeyboard getToolbarWithPrevNextDone:FALSE :TRUE];
         
     }
-    else if (textField.tag == 14)
+    else if (textField.tag == 15)
     {
         toolbar = [customKeyboard getToolbarWithPrevNextDone:TRUE :FALSE];
         
@@ -325,14 +397,14 @@
 
 -(void)setPositionOfLoginBaseViewWhenStartEditing:(CGFloat)yAxis{
     
-    if (self.viewLogin.frame.origin.y != yAxis) {
+    if (self.view.frame.origin.y != yAxis) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
-        [AppGlobal setViewPositionWithView:self.viewLogin axisX:self.viewLogin.frame.origin.x axisY:yAxis withAnimation:YES];
+        [AppGlobal setViewPositionWithView:self.view axisX:self.view.frame.origin.x axisY:yAxis withAnimation:YES];
     }
 }
 
 -(void)setPositionOfLoginBaseViewWhenEndEditing{
-    [AppGlobal setViewPositionWithView:self.viewLogin axisX:self.viewLogin.frame.origin.x axisY:0.0 withAnimation:YES];
+    [AppGlobal setViewPositionWithView:self.view axisX:self.view.frame.origin.x axisY:0.0 withAnimation:YES];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -410,9 +482,39 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)componen
-{
+{    switch(selectedPicker) {
+    case SCHOOL_DATA:
+    {
+     return  [arraySchools count];
+    }break;
+    case CLASS_DATA:
+    {
+      return [arrayClass count];
+       
+    }break;
+    case ROOM_DATA:
+    {
+       return [arrayHome count];
+       
+    }break;
+    case TITLE_DATA:
+    {
+       return [arrayAllData count];
+        
+    }break;
+    case COURSE_DATA:
+    {
+        return [arrayAllData count];
+        
+    }break;
+        
+    default:
+        [NSException raise:NSGenericException format:@"Unexpected FormatType."];
+        
+}
     
-    return [arrayAllData count];;
+    
+   
 }
 
 
@@ -431,26 +533,34 @@
         switch(selectedPicker) {
         case SCHOOL_DATA:
             {
-                NSDictionary *responseDic = [ arrayAllData objectAtIndex:row];
-                return [responseDic objectForKey:@"SchoolName"];
+                NSDictionary *responseDic = [ arraySchools objectAtIndex:row];
+                
+                return [responseDic objectForKey:@"schoolName"];
+                
 
                 break;
             }
         case CLASS_DATA:
             {
-                NSDictionary *responseDic = [ arrayAllData objectAtIndex:row];
-                return [responseDic objectForKey:@"ClassName"];
+                NSDictionary *responseDic = [ arrayClass objectAtIndex:row];
+               return [responseDic objectForKey:@"className"];
                 
                 break;
             }
         case ROOM_DATA:
             {
-                NSDictionary *responseDic = [ arrayAllData objectAtIndex:row];
-                return [responseDic objectForKey:@"HoomRoom"];
+                NSDictionary *responseDic = [ arrayHome objectAtIndex:row];
+                return [responseDic objectForKey:@"homeRoomName"];
                 
                 break;
             }
             case TITLE_DATA:
+            {
+                NSDictionary *responseDic = [ arrayAllData objectAtIndex:row];
+                return [responseDic objectForKey:@"Title"];
+                break;
+            }
+            case COURSE_DATA:
             {
                 NSDictionary *responseDic = [ arrayAllData objectAtIndex:row];
                 return [responseDic objectForKey:@"Title"];
@@ -473,29 +583,41 @@
      switch(selectedPicker) {
         case SCHOOL_DATA:
         {
-            NSDictionary *responseDic = [ arrayAllData objectAtIndex:mIntRow];
+            NSDictionary *responseDic = [ arraySchools objectAtIndex:mIntRow];
+            arrayClass=  [responseDic objectForKey:@"classList"];
+            selectedSchoolId=  [responseDic objectForKey:@"schoolId"];
+            selectedSchoolName=  [responseDic objectForKey:@"schoolName"];
+            [btnSchool setTitle:selectedSchoolName forState:UIControlStateNormal];
            //[responseDic objectForKey:@"SchoolName"];
             
             break;
         }
         case CLASS_DATA:
         {
-            NSDictionary *responseDic = [ arrayAllData objectAtIndex:mIntRow];
+            NSDictionary *responseDic = [ arrayClass objectAtIndex:mIntRow];
+            arrayHome=  [responseDic objectForKey:@"homeRoomList"];
+            selectedClassId=  [responseDic objectForKey:@"classId"];
+            selectedClassName=  [responseDic objectForKey:@"className"];
            //[responseDic objectForKey:@"ClassName"];
-            
+            [btnClass setTitle:selectedClassName forState:UIControlStateNormal];
+
             break;
         }
         case ROOM_DATA:
         {
-            NSDictionary *responseDic = [ arrayAllData objectAtIndex:mIntRow];
+            NSDictionary *responseDic = [ arrayHome objectAtIndex:mIntRow];
+            selectedRoomId=  [responseDic objectForKey:@"homeRoomId"];
+            selectedRoomName=  [responseDic objectForKey:@"homeRoomName"];
             // [responseDic objectForKey:@"HoomRoom"];
-            
+            [btnHome setTitle:selectedRoomName forState:UIControlStateNormal];
+
             break;
         }
         case TITLE_DATA:
         {
             NSDictionary *responseDic = [ arrayAllData objectAtIndex:mIntRow];
             selectedTitle= [responseDic objectForKey:@"Title"];
+             [btnTitle setTitle:selectedTitle forState:UIControlStateNormal];
             break;
         }
             

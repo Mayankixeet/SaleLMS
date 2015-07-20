@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 //#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "FeedViewController.h"
+#import "CourseViewController.h"
 
 @interface AppDelegate (){
     UIView *spinnerView;
@@ -31,10 +33,19 @@
     self._homeViewController=[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
     
 
-//    self._navHomeViewController=[[UINavigationController alloc] initWithRootViewController:self._homeViewController];
+
     
     self._navHomeViewController = [[UINavigationController alloc] initWithRootViewController:self._homeViewController];
     [self._navHomeViewController.navigationBar setHidden:YES];
+   
+    
+    UIViewController *feedview = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
+    UIViewController *courseView = [[CourseViewController alloc] initWithNibName:@"CourseViewController" bundle:nil];
+    
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:feedview,courseView, nil];
+   // self.window.rootViewController = self.tabBarController;
+   // [self._navHomeViewController.tabBarController setHidesBottomBarWhenPushed:YES    ];
     self.window.rootViewController = self._navHomeViewController;
     [self.window makeKeyAndVisible];
     [FBLoginView class];

@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "RegisterationViewController.h"
+#import "FeedViewController.h"
 @interface HomeViewController ()
 
 @end
@@ -16,6 +17,8 @@
 @synthesize _homeViewController,_navigationController_Login;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
     // Do any additional setup after loading the view from its nib.
 //        FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
 //        loginButton.center = self.view.center;
@@ -34,7 +37,13 @@
 //                }
 //            }
 //        }];
- 
+    if([AppGlobal getValueInDefault:key_UserId ]!=nil)
+    {
+        FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+        
+        
     [self toggleHiddenState:YES];
    // self.lblLoginStatus.text = @"";
     
@@ -102,7 +111,9 @@
         [appDelegate showSpinnerWithMessage:DATA_LOADING_MSG];
         
         [[appDelegate _engine] FBloginWithUserID:userid success:^(UserDetail *userDetail) {
-                                             
+            [AppGlobal setValueInDefault:key_UserId value:userDetail.userId];
+            [AppGlobal setValueInDefault:key_UserName value:userDetail.userFirstName];
+            [AppGlobal setValueInDefault:key_UserEmail value:userDetail.userEmail];
                                              [self loginSucessFull];
                                              
                                              //Hide Indicator
@@ -113,6 +124,7 @@
                                              [appDelegate hideSpinner];
                                              NSLog(@"failure JsonData %@",[error description]);
                                              [self loginError:error];
+                                             [self loginViewShowingLoggedOutUser:loginView];
                                              
                                          }];
     
@@ -126,6 +138,8 @@
     
    
     [self dismissViewControllerAnimated:YES completion:^{}];
+    FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(void)loginError:(NSError*)error{
@@ -137,7 +151,7 @@
     [FBSession.activeSession closeAndClearTokenInformation];
     [FBSession.activeSession close];
     [FBSession setActiveSession:nil];
-      [self toggleHiddenState:YES];
+    [self toggleHiddenState:YES];
 }
 
 

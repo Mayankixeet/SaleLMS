@@ -33,4 +33,8 @@
 //get Master Data
 -(void)getMasterData:(void (^)(BOOL success))success  failure:(void (^)(NSError *error))failure;
 
+#pragma Courses Functions
+//get my Course Data
+-(void)getMyCourse:(NSString*)userid  AndTextSearch:(NSString*)txtSearch success:(void (^)(NSMutableArray *courses))success  failure:(void (^)(NSError *error))failure;
+    
 @end

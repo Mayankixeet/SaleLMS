@@ -8,7 +8,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterationViewController">
             <connections>
-                <outlet property="btnFacebook" destination="VFc-0o-OME" id="w5r-2S-iLz"/>
+                <outlet property="btnClass" destination="htK-ux-Jd7" id="znL-d8-tuZ"/>
+                <outlet property="btnFacebook" destination="VFc-0o-OME" id="IgX-Xr-8xD"/>
+                <outlet property="btnHome" destination="834-AK-Lfi" id="o6Z-sa-xz1"/>
+                <outlet property="btnSchool" destination="ccR-Qo-HB5" id="Ew9-Mv-fni"/>
+                <outlet property="btnTitle" destination="TGc-kc-95k" id="WdI-R2-N1o"/>
                 <outlet property="mDataPickerView" destination="O01-8k-fy4" id="VbN-lw-7rw"/>
                 <outlet property="mViewAccountTypePicker" destination="dnM-TO-JE6" id="Nhh-qr-KYS"/>
                 <outlet property="txtAdminEmail" destination="50E-vy-faL" id="3aL-ut-g9n"/>
@@ -105,13 +109,13 @@
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q3V-z8-e9g" userLabel="viewLift">
                     <rect key="frame" x="0.0" y="71" width="320" height="734"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" tag="11" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Last Name" minimumFontSize="17" background="first_nm.png" translatesAutoresizingMaskIntoConstraints="NO" id="XQw-99-1dk" userLabel="txtLastName">
+                        <textField opaque="NO" clipsSubviews="YES" tag="11" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Last Name" minimumFontSize="17" background="first_nm.png" translatesAutoresizingMaskIntoConstraints="NO" id="XQw-99-1dk" userLabel="txtLastName">
                             <rect key="frame" x="108" y="57" width="163" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="50K-ap-Rdf"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="50K-ap-Rdf"/>
@@ -132,7 +136,7 @@
                                 <constraint firstAttribute="height" constant="30" id="LpO-GQ-iwh"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="LpO-GQ-iwh"/>
@@ -153,7 +157,7 @@
                                 <constraint firstAttribute="height" constant="30" id="9me-Km-9AR"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="9me-Km-9AR"/>
@@ -168,13 +172,13 @@
                                 <outlet property="delegate" destination="-1" id="WRR-hI-tgO"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" tag="14" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Confirm Password" minimumFontSize="17" background="email.png" translatesAutoresizingMaskIntoConstraints="NO" id="FF3-Uh-0eG" userLabel="txtConfirmPassword">
+                        <textField opaque="NO" clipsSubviews="YES" tag="14" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Confirm Password" minimumFontSize="17" background="email.png" translatesAutoresizingMaskIntoConstraints="NO" id="FF3-Uh-0eG" userLabel="txtConfirmPassword">
                             <rect key="frame" x="49" y="171" width="222" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="s66-je-8qe"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="s66-je-8qe"/>
@@ -189,7 +193,7 @@
                                 <outlet property="delegate" destination="-1" id="bYV-Te-pG2"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" tag="15" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  School Email" minimumFontSize="17" background="email.png" translatesAutoresizingMaskIntoConstraints="NO" id="50E-vy-faL" userLabel="txtSchoolEmail">
+                        <textField opaque="NO" clipsSubviews="YES" tag="15" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="School Email" minimumFontSize="17" background="email.png" translatesAutoresizingMaskIntoConstraints="NO" id="50E-vy-faL" userLabel="txtSchoolEmail">
                             <rect key="frame" x="49" y="247" width="222" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="vN8-2X-cwz"/>
@@ -216,10 +220,11 @@
                                 <constraint firstAttribute="height" constant="30" id="K2L-xw-TdK"/>
                                 <constraint firstAttribute="width" constant="72" id="yLq-iP-fLR"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <inset key="titleEdgeInsets" minX="5" minY="5" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="36" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title=" Mr." backgroundImage="mr.png">
-                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="mr.png">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="default">
@@ -321,13 +326,13 @@
                                 </mask>
                             </variation>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  First Name" minimumFontSize="17" background="first_nm.png" translatesAutoresizingMaskIntoConstraints="NO" id="7zM-bU-cUJ" userLabel="txtFirstName">
+                        <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" First Name" minimumFontSize="17" background="first_nm.png" translatesAutoresizingMaskIntoConstraints="NO" id="7zM-bU-cUJ" userLabel="txtFirstName">
                             <rect key="frame" x="108" y="19" width="163" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="uGD-CB-jdy"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="uGD-CB-jdy"/>
@@ -347,9 +352,10 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="Fi3-j6-mzc"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
-                            <state key="normal" title="  School Name" backgroundImage="school_drop.png">
-                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <inset key="titleEdgeInsets" minX="5" minY="5" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" backgroundImage="school_drop.png">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="default">
@@ -371,9 +377,10 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="oIx-6r-Uld"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
-                            <state key="normal" title="  Class" backgroundImage="school_drop.png">
-                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <inset key="titleEdgeInsets" minX="5" minY="5" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" backgroundImage="school_drop.png">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="default">
@@ -395,9 +402,10 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="KEX-ua-HFX"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
-                            <state key="normal" title="  Home Room" backgroundImage="school_drop.png">
-                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <inset key="titleEdgeInsets" minX="5" minY="5" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" backgroundImage="school_drop.png">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="default">
@@ -611,12 +619,14 @@
                             <rect key="frame" x="0.0" y="2" width="320" height="44"/>
                             <items>
                                 <barButtonItem style="plain" systemItem="cancel" id="75a-7C-FAK">
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="mBtnCancelPicker:" destination="-1" id="giH-zW-kyO"/>
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="68P-gK-9Db"/>
                                 <barButtonItem style="plain" systemItem="done" id="I66-eU-uKD">
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="mBtnDonePicker:" destination="-1" id="4TP-9a-hdk"/>
                                     </connections>
@@ -737,9 +747,6 @@
                     <exclude reference="dnM-TO-JE6"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="XtN-rI-eMd"/>
-                    <exclude reference="boq-Lw-YDq"/>
-                    <exclude reference="sVg-DQ-C2L"/>
                     <exclude reference="ONK-F8-Mkc"/>
                     <exclude reference="RJL-3W-BUg"/>
                     <exclude reference="RJS-kd-zjg"/>
@@ -761,6 +768,9 @@
                     <exclude reference="bBC-A6-pwd"/>
                     <exclude reference="omI-Oe-keg"/>
                     <exclude reference="tat-vO-tzy"/>
+                    <exclude reference="XtN-rI-eMd"/>
+                    <exclude reference="boq-Lw-YDq"/>
+                    <exclude reference="sVg-DQ-C2L"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -768,9 +778,6 @@
                     <include reference="dnM-TO-JE6"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="XtN-rI-eMd"/>
-                    <include reference="boq-Lw-YDq"/>
-                    <include reference="sVg-DQ-C2L"/>
                     <include reference="ONK-F8-Mkc"/>
                     <include reference="RJL-3W-BUg"/>
                     <include reference="RJS-kd-zjg"/>
@@ -792,9 +799,12 @@
                     <include reference="bBC-A6-pwd"/>
                     <include reference="omI-Oe-keg"/>
                     <include reference="tat-vO-tzy"/>
+                    <include reference="XtN-rI-eMd"/>
+                    <include reference="boq-Lw-YDq"/>
+                    <include reference="sVg-DQ-C2L"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="939" y="-2806"/>
+            <point key="canvasLocation" x="797" y="-2827"/>
         </view>
     </objects>
     <resources>

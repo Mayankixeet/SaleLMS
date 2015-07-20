@@ -154,9 +154,14 @@
     
     
     switch(dropdownName) {
-        case SCHOOL_DATA:
+        case SCHOOL_DATA:{
+            
+            NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            filePath =  [NSString stringWithFormat:@"%@/%@.txt",[arr objectAtIndex:0],[self getDropdownFileName:dropdownName] ];
+        }break;
         case CLASS_DATA:
         case ROOM_DATA:
+        case  COURSE_DATA:
         case TITLE_DATA:
         {
             filePath =  [[NSBundle mainBundle] pathForResource:[self getDropdownFileName:dropdownName] ofType:@"txt"];
@@ -190,7 +195,7 @@
     NSString *fileName;
     switch(dropdownName) {
         case SCHOOL_DATA:
-            fileName = @"stataList";
+            fileName = @"SchoolList";
             break;
         case CLASS_DATA:
             fileName = @"classList";
@@ -201,6 +206,10 @@
             
         case TITLE_DATA:
             fileName = @"titleList";
+            break;
+            
+        case COURSE_DATA:
+            fileName = @"CourseList";
             break;
 
         default:

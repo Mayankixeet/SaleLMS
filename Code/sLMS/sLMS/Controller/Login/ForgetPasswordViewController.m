@@ -7,6 +7,7 @@
 //
 
 #import "ForgetPasswordViewController.h"
+#import "FeedViewController.h"
 
 @interface ForgetPasswordViewController ()
 
@@ -185,6 +186,8 @@
                                          //Hide Indicator
                                          [appDelegate hideSpinner];
                                          NSLog(@"failure JsonData %@",[error description]);
+                                         [self loginViewShowingLoggedOutUser:loginView];
+
                                          [self loginError:error];
                                          
                                      }];
@@ -196,13 +199,21 @@
     //    self.lblUsername.text = user.name;
     //    self.lblEmail.text = [user objectForKey:@"email"];
 }
+-(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
+    // self.lblLoginStatus.text = @"You are logged out";
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession.activeSession close];
+    [FBSession setActiveSession:nil];
+    [self toggleHiddenState:YES];
+}
 
 -(void)loginSucessFullWithFB{
     // if FB Varification is done then navigate the main screen
     
     
     [self dismissViewControllerAnimated:YES completion:^{}];
-    
+    FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 -(void)loginError:(NSError*)error{
     

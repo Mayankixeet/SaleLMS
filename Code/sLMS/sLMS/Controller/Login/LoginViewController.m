@@ -11,6 +11,7 @@
 #import "CustomKeyboard.h"
 #import "ForgetPasswordViewController.h"
 #import "RegisterationViewController.h"
+#import "FeedViewController.h"
 @interface LoginViewController() <CustomKeyboardDelegate>
 {
     //keyboard
@@ -26,6 +27,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     //init the keyboard
+    if([AppGlobal getValueInDefault:key_UserId ]!=nil)
+    {
+        FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
     customKeyboard = [[CustomKeyboard alloc] init];
     customKeyboard.delegate = self;
     
@@ -129,7 +135,9 @@
     [appDelegate showSpinnerWithMessage:DATA_LOADING_MSG];
     
     [[appDelegate _engine] FBloginWithUserID:userid success:^(UserDetail *userDetail) {
-        
+        [AppGlobal setValueInDefault:key_UserId value:userDetail.userId];
+        [AppGlobal setValueInDefault:key_UserName value:userDetail.userFirstName];
+        [AppGlobal setValueInDefault:key_UserEmail value:userDetail.userEmail];
         [self loginSucessFullWithFB];
         
         //Hide Indicator
@@ -140,7 +148,8 @@
                                          [appDelegate hideSpinner];
                                          NSLog(@"failure JsonData %@",[error description]);
                                          [self loginError:error];
-                                         
+                                         [self loginViewShowingLoggedOutUser:loginView];
+
                                      }];
     
     
@@ -156,7 +165,17 @@
     
     
     [self dismissViewControllerAnimated:YES completion:^{}];
+    FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
+-(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
+    // self.lblLoginStatus.text = @"You are logged out";
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession.activeSession close];
+    [FBSession setActiveSession:nil];
+    [self toggleHiddenState:YES];
+}
+
 #pragma mark - Login Action
 
 -(IBAction)btnRememberClick:(id)sender{
@@ -188,7 +207,9 @@
         
         [[appDelegate _engine] loginWithUserName:loginID password:password  rememberMe:[btnRemember isSelected]
                                          success:^(UserDetail *userDetail) {
-                                             
+                                             [AppGlobal setValueInDefault:key_UserId value:userDetail.userId];
+                                             [AppGlobal setValueInDefault:key_UserName value:userDetail.userFirstName];
+                                             [AppGlobal setValueInDefault:key_UserEmail value:userDetail.userEmail];
                                              [self loginSucessFull];
                                              
                                              //Hide Indicator
@@ -227,6 +248,8 @@
     [txtUsername setText:@""];
     [txtPassword setText:@""];
     [self dismissViewControllerAnimated:YES completion:^{}];
+    FeedViewController *viewController= [[FeedViewController alloc]initWithNibName:@"FeedViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(void)loginError:(NSError*)error{

@@ -137,21 +137,21 @@
                     <exclude reference="iqb-9u-Wn6"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="37K-xU-ZVv"/>
-                    <exclude reference="TCg-OK-D1I"/>
-                    <exclude reference="iuW-7I-NiK"/>
-                    <exclude reference="jSv-RU-cCP"/>
-                    <exclude reference="59N-66-RhX"/>
-                    <exclude reference="ys8-5U-50P"/>
-                    <exclude reference="ETq-Fl-Pi8"/>
-                    <exclude reference="suw-ev-2mt"/>
                     <exclude reference="gkZ-I3-tCz"/>
                     <exclude reference="xYy-8z-ggY"/>
                     <exclude reference="xcD-91-Jgd"/>
+                    <exclude reference="ETq-Fl-Pi8"/>
+                    <exclude reference="suw-ev-2mt"/>
+                    <exclude reference="59N-66-RhX"/>
+                    <exclude reference="ys8-5U-50P"/>
                     <exclude reference="1os-nx-nYt"/>
                     <exclude reference="PrN-iI-k5Q"/>
                     <exclude reference="ZTv-XT-8tK"/>
                     <exclude reference="qvJ-9E-4uG"/>
+                    <exclude reference="37K-xU-ZVv"/>
+                    <exclude reference="TCg-OK-D1I"/>
+                    <exclude reference="iuW-7I-NiK"/>
+                    <exclude reference="jSv-RU-cCP"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -162,21 +162,21 @@
                     <include reference="iqb-9u-Wn6"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="37K-xU-ZVv"/>
-                    <include reference="TCg-OK-D1I"/>
-                    <include reference="iuW-7I-NiK"/>
-                    <include reference="jSv-RU-cCP"/>
-                    <include reference="59N-66-RhX"/>
-                    <include reference="ys8-5U-50P"/>
-                    <include reference="ETq-Fl-Pi8"/>
-                    <include reference="suw-ev-2mt"/>
                     <include reference="gkZ-I3-tCz"/>
                     <include reference="xYy-8z-ggY"/>
                     <include reference="xcD-91-Jgd"/>
+                    <include reference="ETq-Fl-Pi8"/>
+                    <include reference="suw-ev-2mt"/>
+                    <include reference="59N-66-RhX"/>
+                    <include reference="ys8-5U-50P"/>
                     <include reference="1os-nx-nYt"/>
                     <include reference="PrN-iI-k5Q"/>
                     <include reference="ZTv-XT-8tK"/>
                     <include reference="qvJ-9E-4uG"/>
+                    <include reference="37K-xU-ZVv"/>
+                    <include reference="TCg-OK-D1I"/>
+                    <include reference="iuW-7I-NiK"/>
+                    <include reference="jSv-RU-cCP"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="800" y="-5041"/>
